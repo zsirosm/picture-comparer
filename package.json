@@ -1,0 +1,16 @@
+{
+  "name": "picturecomparer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "rembrandt": "~0.1.3",
+    "sharp": "^0.20.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
