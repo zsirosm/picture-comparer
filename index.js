@@ -66,7 +66,12 @@ async function compareThread({
     // fork another process
     const process = fork("./forkedProcess.js");
     // initial data seeding
-    process.send({ action: SEND_BASE_DIRECTORY, baseDirectory, baseFiles, compareDirectory });
+    process.send({
+      action: SEND_BASE_DIRECTORY,
+      baseDirectory,
+      baseFiles,
+      compareDirectory
+    });
     process.on(
       "message",
       processListener(
@@ -109,6 +114,9 @@ async function multiThreadedCompare(
 }
 
 async function searchForDuplicates(baseDirectory, compareDirectory) {
+
+  
+
   const baseFiles = await readDirectory(baseDirectory);
   const compareFiles = await readDirectory(compareDirectory);
 
@@ -141,24 +149,28 @@ async function searchForDuplicates(baseDirectory, compareDirectory) {
     },
     threads // number of threads
   );
-  console.log("job done")
+  console.log("job done");
 }
 
 // ======================================
 
-console.log("yolo");
+// console.log("yolo");
 
-const dir1 = process.argv[2];
-const dir2 = process.argv[3];
+// const dir1 = process.argv[2];
+// const dir2 = process.argv[3];
 
-// compareFiles("original.jpg", "sample.jpg").then(result => {
-//   console.log("rembrandt result", result);
-//   saveFile(result.compositionImage, "singleCompare.jpg")
-// });
+// // compareFiles("original.jpg", "sample.jpg").then(result => {
+// //   console.log("rembrandt result", result);
+// //   saveFile(result.compositionImage, "singleCompare.jpg")
+// // });
 
-if (!(dir1 && dir2)) {
-  console.log("not enough directories for operation, exiting...");
-  process.exit(1);
-}
+// if (!(dir1 && dir2)) {
+//   console.log("not enough directories for operation, exiting...");
+//   process.exit(1);
+// }
 
-searchForDuplicates(dir1, dir2);
+// searchForDuplicates(dir1, dir2);
+
+module.exports = {
+  searchForDuplicates
+};

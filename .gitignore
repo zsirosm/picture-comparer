@@ -1,5 +1,8 @@
 *
 !*.js
+!*.jsx
 !*.json
 !*.gitignore
 !*.md
+!.src/**
+!webpack.config.js
